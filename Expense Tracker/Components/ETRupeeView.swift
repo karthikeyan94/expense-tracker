@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct ETRupeeView: View {
+    
     let amount: Double
     var fontSize: Int = 20
+    var color: Color?
     
-    var isNegative: Bool {
-        return self.amount < 0
+    var textColor: Color {
+        if let clr = color {
+            return clr
+        }
+        if (self.amount < 0) {
+            return Color(.systemRed)
+        } else {
+            return Color(.systemGreen)
+        }
     }
     
     var body: some View {
@@ -20,7 +29,7 @@ struct ETRupeeView: View {
             Text(amount.formatAmountOfRegionalCurrency())
         }
         .font(.system(size: CGFloat(fontSize), weight: .semibold))
-        .foregroundColor(isNegative ? Color(.systemRed) : Color(.systemGreen))
+        .foregroundColor(textColor)
     }
 }
 

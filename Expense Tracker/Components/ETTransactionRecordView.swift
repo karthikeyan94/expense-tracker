@@ -14,15 +14,15 @@ struct ETTransactionRecordView: View {
     var body: some View {
         HStack {
             VStack {
-                Image(transaction.category.getIconImageName())
+                Image(String(describing: transaction.category))
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 50, height: 50)
+                    .frame(width: 60, height: 60)
                     .clipShape(Circle())
             }
             VStack(alignment: .leading, spacing: 4) {
                 Text(transaction.category.rawValue)
-                Text(transaction.category.getGroup().rawValue)
+                Text(transaction.group.rawValue)
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .lineLimit(2)
@@ -54,7 +54,8 @@ struct ETTransactionRecordView: View {
                 amount: 199.99,
                 transactionTimeMillis: Date().timeIntervalSince1970,
                 type: .debit,
-                category: .netflix
+                category: .netflix,
+                group: .entertainment
             )
     )
 }

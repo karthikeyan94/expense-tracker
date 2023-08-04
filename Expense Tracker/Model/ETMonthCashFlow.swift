@@ -10,6 +10,7 @@ import Foundation
 struct ETMonthCashFlow {
     var income: Double
     var expenses: Double
+    var budget: Double?
     
     var netCashflow: Double {
         return self.income - self.expenses

@@ -13,6 +13,7 @@ struct ETTransaction: Codable, Identifiable, Hashable {
     var transactionTimeMillis: TimeInterval
     var type: ETTransactionType
     var category: ETTransactionCategory
+    var group: ETTransactionGroup
     var comment: String?
     
     var datetime: Date {

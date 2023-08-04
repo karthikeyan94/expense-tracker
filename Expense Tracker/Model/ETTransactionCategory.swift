@@ -103,25 +103,4 @@ enum ETTransactionCategory: String, CaseIterable, Codable {
     case dividend = "Dividend"
     case interetsEarned = "Interests earned"
     case others = "Others"
-    
-    func getIconImageName() -> String {
-        switch self {
-        case .netflix:
-            return "netflix"
-        //TODO
-        default:
-            return ""
-        }
-    }
-    
-    func getGroup() -> ETTransactionGroup {
-        switch self {
-            // TODO
-        case .netflix:
-            return .entertainment
-            // TODO
-        default:
-            return .miscellaneous
-        }
-    }
 }
