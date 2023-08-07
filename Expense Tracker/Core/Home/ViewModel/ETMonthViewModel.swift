@@ -15,11 +15,18 @@ class ETMonthViewModel: ObservableObject {
     
     @Published var recentTransactions: [ETTransaction] = []
     
+    @Published var groupSummary: [ETGroupSummary] = []
+    
     init () {
         self.expenseMonth = Date().toETExpenseMonth()
     }
     
     init(for expenseMonth: ETExpenseMonth) {
         self.expenseMonth = expenseMonth
+    }
+    
+    func getTransactions() -> [ETTransaction] {
+        // TODO - Add method to fetch from firebase
+        return ETTransaction.getMockTransactions()
     }
 }

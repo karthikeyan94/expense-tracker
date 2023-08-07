@@ -36,6 +36,7 @@ struct ETHomeView: View {
     model.monthCashflow.income = 95590.16
     model.monthCashflow.expenses = 45325
     model.recentTransactions = ETTransaction.getMockTransactions()
+    model.groupSummary = ETGroupSummary.getMockedSummary()
     
     return ETHomeView(model: model)
 }

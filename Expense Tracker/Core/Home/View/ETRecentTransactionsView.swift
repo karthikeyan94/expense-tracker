@@ -9,18 +9,18 @@ import SwiftUI
 
 struct ETRecentTransactionsView: View {
     
-    @Binding var transactions: [ETTransaction]
+    @StateObject var model: ETMonthViewModel
     
     var isMoreTransactionsAvailable: Bool {
-        return transactions.count > 3
+        return self.model.recentTransactions.count > 3
     }
     
     var firstThreeTransactions: ArraySlice<ETTransaction> {
-        if transactions.count > 3 {
-            return transactions.prefix(upTo: 3)
+        if self.model.recentTransactions.count > 3 {
+            return self.model.recentTransactions.prefix(upTo: 3)
         }
         
-        return transactions.prefix(upTo: transactions.count)
+        return self.model.recentTransactions.prefix(upTo: self.model.recentTransactions.count)
     }
     
     var body: some View {
@@ -40,7 +40,8 @@ struct ETRecentTransactionsView: View {
             
             if isMoreTransactionsAvailable {
                 NavigationLink {
-                    Text("Transactions list")
+                    ETTransactionsListView(transactions: model.getTransactions())
+                        .navigationTitle("Transactions")
                 } label: {
                     Text("See all")
                 }
@@ -51,5 +52,10 @@ struct ETRecentTransactionsView: View {
 }
 
 #Preview {
-    ETRecentTransactionsView(transactions: .constant(ETTransaction.getMockTransactions()))
+    let model = ETMonthViewModel(for: Date().toETExpenseMonth())
+    model.monthCashflow.income = 95590.16
+    model.monthCashflow.expenses = 45325
+    model.recentTransactions = ETTransaction.getMockTransactions()
+    
+    return ETRecentTransactionsView(model: model)
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct ETTransactionRecordView: View {
     
     let transaction: ETTransaction
+    var fontSize: Int = 20
     
     var body: some View {
         HStack {
@@ -41,7 +42,8 @@ struct ETTransactionRecordView: View {
             .padding(.leading, 8)
             Spacer()
             ETRupeeView(
-                amount: transaction.type == .debit ? (-1 * transaction.amount) : transaction.amount
+                amount: transaction.type == .debit ? (-1 * transaction.amount) : transaction.amount,
+                fontSize: fontSize
             )
         }
     }

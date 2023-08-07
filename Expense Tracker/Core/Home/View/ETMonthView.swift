@@ -15,7 +15,12 @@ struct ETMonthView: View {
         ScrollView {
             ETMonthViewOverviewCard(monthCashflow: $model.monthCashflow)
             ETMonthViewBudget(monthCashflow: $model.monthCashflow)
-            ETRecentTransactionsView(transactions: $model.recentTransactions)
+            if model.recentTransactions.count > 0 {
+                ETRecentTransactionsView(model: model)
+            }
+            if model.groupSummary.count > 0 {
+                ETMonthCategorySummaryView(summary: model.groupSummary)
+            }
         }
         .padding()
     }
@@ -148,6 +153,7 @@ struct ETMonthViewBudget: View {
     model.monthCashflow.income = 95590.16
     model.monthCashflow.expenses = 45325
     model.recentTransactions = ETTransaction.getMockTransactions()
+    model.groupSummary = ETGroupSummary.getMockedSummary()
     
     return ETMonthView(model: model)
 }
