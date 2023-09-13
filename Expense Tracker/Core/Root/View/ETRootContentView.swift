@@ -13,8 +13,7 @@ struct ETRootContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ETRootContentView()
-    }
+#Preview {
+    ETRootContentView()
+        .modelContainer(previewContainer)
 }

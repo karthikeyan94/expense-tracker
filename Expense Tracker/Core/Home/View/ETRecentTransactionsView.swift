@@ -53,8 +53,6 @@ struct ETRecentTransactionsView: View {
 
 #Preview {
     let model = ETMonthViewModel(for: Date().toETExpenseMonth())
-    model.monthCashflow.income = 95590.16
-    model.monthCashflow.expenses = 45325
     model.recentTransactions = ETTransaction.getMockTransactions()
     
     return ETRecentTransactionsView(model: model)

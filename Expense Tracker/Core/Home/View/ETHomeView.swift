@@ -6,37 +6,39 @@
 //
 
 import SwiftUI
-import Charts
+import SwiftData
 
 struct ETHomeView: View {
     
-    @StateObject var model = ETMonthViewModel()
+    @State private var expenseMonth:String = Date().toETExpenseMonth().string
     
     var body: some View {
         NavigationStack {
-            ETMonthView(model: model)
-            .navigationTitle(model.expenseMonth.string())
-            .toolbar {
-                ToolbarItem {
-                    Button {
-                        //TODO : Handle new transaction
-                    } label: {
-                        Image(systemName: "plus")
-                            .font(.system(size: 20))
-                            .foregroundStyle(.blue)
+            ETMonthView(expenseMonth: $expenseMonth, _monthCashflows: monthCashflowQuery)
+                .navigationTitle(expenseMonth)
+                .toolbar {
+                    ToolbarItem {
+                        Button {
+                            //TODO : Handle new transaction
+                        } label: {
+                            Image(systemName: "plus")
+                                .font(.system(size: 20))
+                                .foregroundStyle(.blue)
+                        }
                     }
                 }
-            }
         }
     }
+    
+    var monthCashflowQuery: Query<ETMonthCashFlow, [ETMonthCashFlow]> {
+        let predicate = #Predicate<ETMonthCashFlow> { $0.id == expenseMonth }
+        
+        return Query(filter: predicate)
+    }
+    
 }
 
 #Preview {
-    let model = ETMonthViewModel()
-    model.monthCashflow.income = 95590.16
-    model.monthCashflow.expenses = 45325
-    model.recentTransactions = ETTransaction.getMockTransactions()
-    model.groupSummary = ETGroupSummary.getMockedSummary()
-    
-    return ETHomeView(model: model)
+    ETHomeView()
+        .modelContainer(previewContainer)
 }

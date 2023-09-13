@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ETMonth: String, CaseIterable {
+enum ETMonth: String, CaseIterable, Codable {
     case january = "January"
     case february = "February"
     case march = "March"
@@ -20,4 +20,15 @@ enum ETMonth: String, CaseIterable {
     case october = "October"
     case november = "November"
     case december = "December"
+}
+
+extension ETMonth {
+    
+    func getIndex() -> Int {
+        return ETMonth.allCases.firstIndex(of: self) ?? 0
+    }
+    
+    static func getMonth(month: String) -> ETMonth {
+        ETMonth.allCases.first(where: {$0.rawValue == month}) ?? .january
+    }
 }

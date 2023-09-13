@@ -35,7 +35,7 @@ struct ETTransactionRecordView: View {
                         .lineLimit(2)
                         .multilineTextAlignment(.leading)
                 }
-                Text(transaction.datetime.formatTransaction())
+                Text(transaction.date.formatTransaction())
                     .font(.footnote)
                     .foregroundStyle(.secondary)
             }
@@ -47,17 +47,4 @@ struct ETTransactionRecordView: View {
             )
         }
     }
-}
-
-#Preview {
-    ETTransactionRecordView(
-        transaction:
-            ETTransaction(
-                amount: 199.99,
-                transactionTimeMillis: Date().timeIntervalSince1970,
-                type: .debit,
-                category: .netflix,
-                group: .entertainment
-            )
-    )
 }

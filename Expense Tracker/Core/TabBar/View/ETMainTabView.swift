@@ -44,8 +44,7 @@ struct ETMainTabView: View {
     }
 }
 
-struct MainTabView_Previews: PreviewProvider {
-    static var previews: some View {
-        ETMainTabView()
-    }
+#Preview {
+    ETMainTabView()
+        .modelContainer(previewContainer)
 }
