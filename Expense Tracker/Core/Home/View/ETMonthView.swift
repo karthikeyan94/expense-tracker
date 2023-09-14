@@ -10,25 +10,22 @@ import SwiftData
 
 struct ETMonthView: View {
     
-    @Binding
-    var expenseMonth:String
+    var expenseMonth: Date
     
     @Environment(\.modelContext) private var modelContext
     
-    var month: ETExpenseMonth? {
-        guard let expMonth = ETExpenseMonth(of: expenseMonth) else { return nil }
-        return expMonth
-    }
-    
     @Query
     var monthCashflows: [ETMonthCashFlow]
+    
+    @Query
+    var transactions: [ETTransaction]
     
     var monthCashflow: ETMonthCashFlow {
         if let cashflow = monthCashflows.last {
             return cashflow
         }
         
-        let expenseMonth = ETMonthCashFlow(id: expenseMonth, income: 0, expenses: 0)
+        let expenseMonth = ETMonthCashFlow(id: expenseMonth.formatExpenseMonth(), income: 0, expenses: 0)
         modelContext.insert(expenseMonth)
         return expenseMonth
     }
@@ -37,10 +34,10 @@ struct ETMonthView: View {
         ScrollView {
             ETMonthViewOverviewCard(monthCashflow: monthCashflow)
             ETMonthViewBudget(monthCashflow: monthCashflow)
-            /* if model.recentTransactions.count > 0 {
-             ETRecentTransactionsView(model: model)
-             }
-             if model.groupSummary.count > 0 {
+            if transactions.count > 0 {
+                ETRecentTransactionsView(transactions: transactions)
+            }
+            /* if model.groupSummary.count > 0 {
              ETMonthCategorySummaryView(summary: model.groupSummary)
              }*/
         }
@@ -222,7 +219,6 @@ struct ETAddBudgetView: View {
 }
 
 #Preview {
-    @State var expenseMonth = Date().toETExpenseMonth().string
-    return ETMonthView(expenseMonth: $expenseMonth)
+    return ETMonthView(expenseMonth: Date())
         .modelContainer(previewContainer)
 }

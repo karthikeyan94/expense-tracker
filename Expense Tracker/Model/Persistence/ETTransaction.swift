@@ -19,12 +19,10 @@ class ETTransaction: Identifiable {
     var group: ETTransactionGroup
     var comment: String?
     
-    
-    
-    init(amount: Double, transactionDate: Date = .now, type: ETTransactionType, category: ETTransactionCategory, group: ETTransactionGroup, comment: String? = nil) {
+    init(amount: Double, date: Date, type: ETTransactionType, category: ETTransactionCategory, group: ETTransactionGroup, comment: String? = nil) {
         self.id = UUID().uuidString
         self.amount = amount
-        self.date = transactionDate
+        self.date = date
         self.type = type
         self.category = category
         self.group = group

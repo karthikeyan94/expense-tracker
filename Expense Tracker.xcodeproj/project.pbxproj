@@ -11,18 +11,14 @@
 		F111E7A72A70F28100BB81BE /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111E7A62A70F28100BB81BE /* DateExtension.swift */; };
 		F111E7AD2A70F8AF00BB81BE /* ETRupeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111E7AC2A70F8AF00BB81BE /* ETRupeeView.swift */; };
 		F111E7AF2A7114F900BB81BE /* CurrencyExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111E7AE2A7114F900BB81BE /* CurrencyExtension.swift */; };
-		F111E7B12A711EAC00BB81BE /* ETExpenseMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111E7B02A711EAC00BB81BE /* ETExpenseMonth.swift */; };
 		F111E7B32A71277600BB81BE /* ETMonthCashFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111E7B22A71277600BB81BE /* ETMonthCashFlow.swift */; };
 		F11A099F2A6E9EB8005D952D /* ETHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11A099E2A6E9EB8005D952D /* ETHomeView.swift */; };
-		F11A09A12A6EA1F7005D952D /* ETMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11A09A02A6EA1F7005D952D /* ETMonth.swift */; };
 		F13FA9C82A7CB7C100AF1921 /* ETMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FA9C72A7CB7C100AF1921 /* ETMonthView.swift */; };
-		F13FA9CA2A7CB7DF00AF1921 /* ETMonthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13FA9C92A7CB7DF00AF1921 /* ETMonthViewModel.swift */; };
 		F14B55D42A6A60750001834B /* ExpenseTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B55D32A6A60750001834B /* ExpenseTrackerApp.swift */; };
 		F14B55D62A6A60750001834B /* ETRootContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B55D52A6A60750001834B /* ETRootContentView.swift */; };
 		F14B55D82A6A60750001834B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F14B55D72A6A60750001834B /* Assets.xcassets */; };
 		F14B55DB2A6A60750001834B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F14B55DA2A6A60750001834B /* Preview Assets.xcassets */; };
 		F14B55F02A6A64540001834B /* ETMainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B55EF2A6A64540001834B /* ETMainTabView.swift */; };
-		F14B55F42A6A68F00001834B /* ETProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B55F32A6A68F00001834B /* ETProfileView.swift */; };
 		F19B7F2C2A7F653F00CE49B6 /* ETTransactionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19B7F2B2A7F653F00CE49B6 /* ETTransactionsListView.swift */; };
 		F19B7F2E2A7FB99200CE49B6 /* ETGroupSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19B7F2D2A7FB99200CE49B6 /* ETGroupSummary.swift */; };
 		F19B7F302A7FB9E900CE49B6 /* ETCategorySummaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19B7F2F2A7FB9E900CE49B6 /* ETCategorySummaryExtension.swift */; };
@@ -41,19 +37,15 @@
 		F111E7A62A70F28100BB81BE /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		F111E7AC2A70F8AF00BB81BE /* ETRupeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETRupeeView.swift; sourceTree = "<group>"; };
 		F111E7AE2A7114F900BB81BE /* CurrencyExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExtension.swift; sourceTree = "<group>"; };
-		F111E7B02A711EAC00BB81BE /* ETExpenseMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETExpenseMonth.swift; sourceTree = "<group>"; };
 		F111E7B22A71277600BB81BE /* ETMonthCashFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETMonthCashFlow.swift; sourceTree = "<group>"; };
 		F11A099E2A6E9EB8005D952D /* ETHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETHomeView.swift; sourceTree = "<group>"; };
-		F11A09A02A6EA1F7005D952D /* ETMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETMonth.swift; sourceTree = "<group>"; };
 		F13FA9C72A7CB7C100AF1921 /* ETMonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETMonthView.swift; sourceTree = "<group>"; };
-		F13FA9C92A7CB7DF00AF1921 /* ETMonthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETMonthViewModel.swift; sourceTree = "<group>"; };
 		F14B55D02A6A60750001834B /* Expense Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F14B55D32A6A60750001834B /* ExpenseTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackerApp.swift; sourceTree = "<group>"; };
 		F14B55D52A6A60750001834B /* ETRootContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETRootContentView.swift; sourceTree = "<group>"; };
 		F14B55D72A6A60750001834B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F14B55DA2A6A60750001834B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F14B55EF2A6A64540001834B /* ETMainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETMainTabView.swift; sourceTree = "<group>"; };
-		F14B55F32A6A68F00001834B /* ETProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETProfileView.swift; sourceTree = "<group>"; };
 		F19B7F2B2A7F653F00CE49B6 /* ETTransactionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETTransactionsListView.swift; sourceTree = "<group>"; };
 		F19B7F2D2A7FB99200CE49B6 /* ETGroupSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETGroupSummary.swift; sourceTree = "<group>"; };
 		F19B7F2F2A7FB9E900CE49B6 /* ETCategorySummaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETCategorySummaryExtension.swift; sourceTree = "<group>"; };
@@ -126,14 +118,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		F11A099D2A6E9EA5005D952D /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				F13FA9C92A7CB7DF00AF1921 /* ETMonthViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		F14B55C72A6A60750001834B = {
 			isa = PBXGroup;
 			children = (
@@ -159,7 +143,6 @@
 				F14B55E62A6A618D0001834B /* Core */,
 				F14B55E52A6A61730001834B /* Extensions */,
 				F14B55E32A6A615F0001834B /* Model */,
-				F14B55E42A6A61650001834B /* Services */,
 				F10C70D42A8350E5004CC32A /* Support */,
 				F14B55D72A6A60750001834B /* Assets.xcassets */,
 				F14B55D92A6A60750001834B /* Preview Content */,
@@ -187,18 +170,9 @@
 			isa = PBXGroup;
 			children = (
 				F10C70D32A834EBF004CC32A /* Persistence */,
-				F11A09A02A6EA1F7005D952D /* ETMonth.swift */,
-				F111E7B02A711EAC00BB81BE /* ETExpenseMonth.swift */,
 				F19B7F2D2A7FB99200CE49B6 /* ETGroupSummary.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		F14B55E42A6A61650001834B /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		F14B55E52A6A61730001834B /* Extensions */ = {
@@ -216,7 +190,6 @@
 			isa = PBXGroup;
 			children = (
 				F14B55ED2A6A64070001834B /* TabBar */,
-				F14B55EC2A6A63360001834B /* Profile */,
 				F14B55EB2A6A63220001834B /* Reports */,
 				F14B55EA2A6A631B0001834B /* Home */,
 				F14B55E72A6A61920001834B /* Root */,
@@ -227,7 +200,6 @@
 		F14B55E72A6A61920001834B /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				F14B55E92A6A619E0001834B /* ViewModel */,
 				F14B55E82A6A61980001834B /* View */,
 			);
 			path = Root;
@@ -241,17 +213,9 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		F14B55E92A6A619E0001834B /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		F14B55EA2A6A631B0001834B /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				F11A099D2A6E9EA5005D952D /* ViewModel */,
 				F11A099C2A6E9E9D005D952D /* View */,
 			);
 			path = Home;
@@ -262,15 +226,6 @@
 			children = (
 			);
 			path = Reports;
-			sourceTree = "<group>";
-		};
-		F14B55EC2A6A63360001834B /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				F14B55F22A6A68E30001834B /* ViewModel */,
-				F14B55F12A6A68DB0001834B /* View */,
-			);
-			path = Profile;
 			sourceTree = "<group>";
 		};
 		F14B55ED2A6A64070001834B /* TabBar */ = {
@@ -287,21 +242,6 @@
 				F14B55EF2A6A64540001834B /* ETMainTabView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		F14B55F12A6A68DB0001834B /* View */ = {
-			isa = PBXGroup;
-			children = (
-				F14B55F32A6A68F00001834B /* ETProfileView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		F14B55F22A6A68E30001834B /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,15 +316,12 @@
 			files = (
 				F1E5742B2A73EE1D00F76791 /* ETTransactionRecordView.swift in Sources */,
 				F1DBBD602A7B41F7003BF75E /* ETRecentTransactionsView.swift in Sources */,
-				F14B55F42A6A68F00001834B /* ETProfileView.swift in Sources */,
 				F111E7A72A70F28100BB81BE /* DateExtension.swift in Sources */,
 				F14B55D62A6A60750001834B /* ETRootContentView.swift in Sources */,
 				F19B7F2E2A7FB99200CE49B6 /* ETGroupSummary.swift in Sources */,
 				F10C70D62A83520A004CC32A /* PreviewSampleData.swift in Sources */,
 				F14B55D42A6A60750001834B /* ExpenseTrackerApp.swift in Sources */,
 				F13FA9C82A7CB7C100AF1921 /* ETMonthView.swift in Sources */,
-				F13FA9CA2A7CB7DF00AF1921 /* ETMonthViewModel.swift in Sources */,
-				F11A09A12A6EA1F7005D952D /* ETMonth.swift in Sources */,
 				F19B7F322A80BD4900CE49B6 /* ETMonthCategorySummaryView.swift in Sources */,
 				F19B7F302A7FB9E900CE49B6 /* ETCategorySummaryExtension.swift in Sources */,
 				F19B7F2C2A7F653F00CE49B6 /* ETTransactionsListView.swift in Sources */,
@@ -392,7 +329,6 @@
 				F111E7B32A71277600BB81BE /* ETMonthCashFlow.swift in Sources */,
 				F111E7AF2A7114F900BB81BE /* CurrencyExtension.swift in Sources */,
 				F1E574232A73C50600F76791 /* ETTransactionGroup.swift in Sources */,
-				F111E7B12A711EAC00BB81BE /* ETExpenseMonth.swift in Sources */,
 				F14B55F02A6A64540001834B /* ETMainTabView.swift in Sources */,
 				F1DBBD622A7B4A5E003BF75E /* ETTransactionExtension.swift in Sources */,
 				F1E574272A73CB7400F76791 /* ETTransactionCategory.swift in Sources */,

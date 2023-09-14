@@ -31,15 +31,6 @@ struct ETMainTabView: View {
                     Label("Reports", systemImage: "chart.bar.fill")
                 }
                 .tag(1)
-            
-            ETProfileView()
-                .onAppear {
-                    selectedTab = 2
-                }
-                .tabItem {
-                    Label("Profile", systemImage: "person.circle")
-                }
-                .tag(2)
         }
     }
 }

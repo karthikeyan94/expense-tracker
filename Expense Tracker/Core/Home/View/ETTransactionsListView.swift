@@ -19,5 +19,6 @@ struct ETTransactionsListView: View {
 }
 
 #Preview {
-    ETTransactionsListView(transactions: ETTransaction.getMockTransactions())
+    let transactions: [ETTransaction] = []
+    return ETTransactionsListView(transactions: transactions)
 }

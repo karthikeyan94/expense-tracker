@@ -6,21 +6,22 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ETRecentTransactionsView: View {
     
-    @StateObject var model: ETMonthViewModel
+    var transactions: [ETTransaction]
     
     var isMoreTransactionsAvailable: Bool {
-        return self.model.recentTransactions.count > 3
+        return self.transactions.count > 3
     }
     
     var firstThreeTransactions: ArraySlice<ETTransaction> {
-        if self.model.recentTransactions.count > 3 {
-            return self.model.recentTransactions.prefix(upTo: 3)
+        if self.transactions.count > 3 {
+            return self.transactions.prefix(upTo: 3)
         }
         
-        return self.model.recentTransactions.prefix(upTo: self.model.recentTransactions.count)
+        return self.transactions.prefix(upTo: self.transactions.count)
     }
     
     var body: some View {
@@ -40,7 +41,7 @@ struct ETRecentTransactionsView: View {
             
             if isMoreTransactionsAvailable {
                 NavigationLink {
-                    ETTransactionsListView(transactions: model.getTransactions())
+                    ETTransactionsListView(transactions: transactions)
                         .navigationTitle("Transactions")
                 } label: {
                     Text("See all")
@@ -52,8 +53,7 @@ struct ETRecentTransactionsView: View {
 }
 
 #Preview {
-    let model = ETMonthViewModel(for: Date().toETExpenseMonth())
-    model.recentTransactions = ETTransaction.getMockTransactions()
-    
-    return ETRecentTransactionsView(model: model)
+    let transactions: [ETTransaction] = []
+    return ETRecentTransactionsView(transactions: transactions)
+        .modelContainer(previewContainer)
 }
