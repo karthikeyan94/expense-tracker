@@ -12,20 +12,28 @@ struct ETHomeView: View {
     
     @State private var expenseMonth: Date = Date()
     
-    var expenseMonthId: String {
-        expenseMonth.formatExpenseMonth()
+    @Environment(\.modelContext) private var modelContext
+    
+    var monthCashFlows: [ETMonthCashFlow] {
+        let monthId = expenseMonth.formatExpenseMonth()
+        guard let months = try? modelContext.fetch(FetchDescriptor<ETMonthCashFlow>(predicate: #Predicate<ETMonthCashFlow> { $0.id == monthId } )) else { return [] }
+        return months
     }
     
-    var monthName: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM yyyy"
-        return dateFormatter.string(from: Date())
+    var monthCashflow: ETMonthCashFlow {
+        if let cashflow = monthCashFlows.last {
+            return cashflow
+        }
+        
+        let expenseMonth = ETMonthCashFlow(id: expenseMonth.formatExpenseMonth(), income: 0, expenses: 0)
+        modelContext.insert(expenseMonth)
+        return expenseMonth
     }
     
     var body: some View {
         NavigationStack {
-            ETMonthView(expenseMonth: expenseMonth, _monthCashflows: monthCashflowQuery, _transactions: monthTransactionQuery)
-                .navigationTitle(monthName)
+            ETMonthView(expenseMonth: expenseMonth, monthCashflow: monthCashflow)
+                .navigationTitle(expenseMonth.formatExpenseMonth())
                 .toolbar {
                     ToolbarItem {
                         Button {
@@ -38,19 +46,6 @@ struct ETHomeView: View {
                     }
                 }
         }
-    }
-    
-    var monthCashflowQuery: Query<ETMonthCashFlow, [ETMonthCashFlow]> {
-        let predicate = #Predicate<ETMonthCashFlow> { $0.id == expenseMonthId }
-        
-        return Query(filter: predicate)
-    }
-    
-    var monthTransactionQuery: Query<ETTransaction, [ETTransaction]> {
-        let (startOfMonth, endOfMonth) = expenseMonth.startAndEndOfMonth()
-        let predicate = #Predicate<ETTransaction> { $0.date >= startOfMonth && $0.date <= endOfMonth}
-        
-        return Query(filter: predicate, sort: \.date, order: .reverse)
     }
 }
 

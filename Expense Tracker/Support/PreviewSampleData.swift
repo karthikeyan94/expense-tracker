@@ -26,9 +26,9 @@ let previewContainer: ModelContainer = {
             ETTransaction(amount: 800, date: today.addingTimeInterval(4 * 60), type: .debit, category: .houseMaintenance, group: .home),
             ETTransaction(amount: 90, date: today.addingTimeInterval(5 * 60), type: .debit, category: .milk, group: .provisions),
             ETTransaction(amount: 1400, date: today.addingTimeInterval(6 * 60), type: .debit, category: .groceries, group: .provisions),
-            ETTransaction(amount: 350, date: today.addingTimeInterval(7 * 60), type: .debit, category: .snacksBeverages, group: .provisions),
-            ETTransaction(amount: 199, date: today.addingTimeInterval(8 * 60), type: .debit, category: .netflix, group: .entertainment),
-            ETTransaction(amount: 1178.82, date: today.addingTimeInterval(9 * 60), type: .debit, category: .broadbandJio, group: .utilities),
+            ETTransaction(amount: 1178.82, date: today.addingTimeInterval(7 * 60), type: .debit, category: .broadbandJio, group: .utilities),
+            ETTransaction(amount: 350, date: today.addingTimeInterval(8 * 60), type: .debit, category: .snacksBeverages, group: .provisions),
+            ETTransaction(amount: 199, date: today.addingTimeInterval(9 * 60), type: .debit, category: .netflix, group: .entertainment),
             ETTransaction(amount: 2895, date: today.addingTimeInterval(10 * 60), type: .debit, category: .vehicleMaintenance, group: .transportation),
             ETTransaction(amount: 600, date: today.addingTimeInterval(11 * 60), type: .debit, category: .oilChanges, group: .transportation)
         ]

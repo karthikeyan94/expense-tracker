@@ -12,22 +12,23 @@ struct ETMonthView: View {
     
     var expenseMonth: Date
     
+    var monthCashflow: ETMonthCashFlow
+    
     @Environment(\.modelContext) private var modelContext
     
-    @Query
-    var monthCashflows: [ETMonthCashFlow]
+    var transactions: [ETTransaction] {
+        let (startOfMonth, endOfMonth) = expenseMonth.startAndEndOfMonth()
+        let predicate = #Predicate<ETTransaction> { $0.date >= startOfMonth && $0.date <= endOfMonth}
+        guard let monthTransactions = try? modelContext.fetch(FetchDescriptor<ETTransaction>(predicate: predicate, sortBy: [.init(\.date, order: .reverse)])) else { return [] }
+        return monthTransactions
+    }
     
-    @Query
-    var transactions: [ETTransaction]
-    
-    var monthCashflow: ETMonthCashFlow {
-        if let cashflow = monthCashflows.last {
-            return cashflow
+    var summary: [ETGroupSummary] {
+        let expenseTransactions = transactions.filter { $0.type == .debit }
+        return Dictionary(grouping: expenseTransactions, by: { $0.group }).mapValues { totalTransactions in
+            totalTransactions.reduce(0.0) { $0 + $1.amount }
         }
-        
-        let expenseMonth = ETMonthCashFlow(id: expenseMonth.formatExpenseMonth(), income: 0, expenses: 0)
-        modelContext.insert(expenseMonth)
-        return expenseMonth
+        .map { ETGroupSummary(group: $0.key, amount: $0.value) }
     }
     
     var body: some View {
@@ -37,9 +38,9 @@ struct ETMonthView: View {
             if transactions.count > 0 {
                 ETRecentTransactionsView(transactions: transactions)
             }
-            /* if model.groupSummary.count > 0 {
-             ETMonthCategorySummaryView(summary: model.groupSummary)
-             }*/
+            if summary.count > 0 {
+                ETMonthCategorySummaryView(summary: summary)
+            }
         }
         .padding()
     }
@@ -219,6 +220,6 @@ struct ETAddBudgetView: View {
 }
 
 #Preview {
-    return ETMonthView(expenseMonth: Date())
+    ETRootContentView()
         .modelContainer(previewContainer)
 }
