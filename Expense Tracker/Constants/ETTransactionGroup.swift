@@ -7,7 +7,11 @@
 
 import Foundation
 
-enum ETTransactionGroup: String, CaseIterable, Codable {
+enum ETTransactionGroup: String, CaseIterable, Codable, Identifiable {
+    var id: Self {
+        return self
+    }
+    
     case home = "Home"
     case utilities = "Utilities"
     case provisions = "Provisions"
@@ -19,7 +23,6 @@ enum ETTransactionGroup: String, CaseIterable, Codable {
     case gifts = "Gifts"
     case entertainment = "Entertainment"
     case vacation = "Vacation"
-    case bankWithdrawl = "Bank cash withdrawl"
     case miscellaneous = "Miscellaneous"
     case income = "Incomes"
 }

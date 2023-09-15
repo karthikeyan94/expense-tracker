@@ -12,6 +12,8 @@ struct ETHomeView: View {
     
     @State private var expenseMonth: Date = Date()
     
+    @State private var showAddTransaction = false
+    
     @Environment(\.modelContext) private var modelContext
     
     var monthCashFlows: [ETMonthCashFlow] {
@@ -32,12 +34,12 @@ struct ETHomeView: View {
     
     var body: some View {
         NavigationStack {
-            ETMonthView(expenseMonth: expenseMonth, monthCashflow: monthCashflow)
+            ETMonthView(expenseMonth: expenseMonth, monthCashflow: monthCashflow, _transactions: monthTransactionQuery)
                 .navigationTitle(expenseMonth.formatExpenseMonth())
                 .toolbar {
                     ToolbarItem {
                         Button {
-                            //TODO : Handle new transaction
+                            showAddTransaction.toggle()
                         } label: {
                             Image(systemName: "plus")
                                 .font(.system(size: 20))
@@ -46,6 +48,15 @@ struct ETHomeView: View {
                     }
                 }
         }
+        .sheet(isPresented: $showAddTransaction, content: {
+            ETAddTransactionView(monthCashflow: monthCashflow)
+        })
+    }
+    
+    var monthTransactionQuery: Query<ETTransaction, [ETTransaction]> {
+        let (startOfMonth, endOfMonth) = expenseMonth.startAndEndOfMonth()
+        let predicate = #Predicate<ETTransaction> { $0.date >= startOfMonth && $0.date <= endOfMonth}
+        return Query(filter: predicate, sort: \.date, order: .reverse)
     }
 }
 

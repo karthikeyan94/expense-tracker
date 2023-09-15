@@ -14,7 +14,7 @@ let previewContainer: ModelContainer = {
         
         let container = try ModelContainer(
             for: ETTransaction.self, ETMonthCashFlow.self,
-            configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+            configurations: ModelConfiguration(isStoredInMemoryOnly: true, allowsSave: true))
         
         let today: Date = .now
         let previousMonth: Date = Calendar.current.date(byAdding: .month, value: -1, to: today)!

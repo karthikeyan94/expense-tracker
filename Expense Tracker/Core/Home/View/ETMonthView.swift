@@ -12,16 +12,12 @@ struct ETMonthView: View {
     
     var expenseMonth: Date
     
-    var monthCashflow: ETMonthCashFlow
+    @Bindable var monthCashflow: ETMonthCashFlow
+    
+    @Query
+    var transactions: [ETTransaction]
     
     @Environment(\.modelContext) private var modelContext
-    
-    var transactions: [ETTransaction] {
-        let (startOfMonth, endOfMonth) = expenseMonth.startAndEndOfMonth()
-        let predicate = #Predicate<ETTransaction> { $0.date >= startOfMonth && $0.date <= endOfMonth}
-        guard let monthTransactions = try? modelContext.fetch(FetchDescriptor<ETTransaction>(predicate: predicate, sortBy: [.init(\.date, order: .reverse)])) else { return [] }
-        return monthTransactions
-    }
     
     var summary: [ETGroupSummary] {
         let expenseTransactions = transactions.filter { $0.type == .debit }
