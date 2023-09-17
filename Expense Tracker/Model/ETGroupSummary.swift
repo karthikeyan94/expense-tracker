@@ -5,9 +5,10 @@
 //  Created by Sivabalan M on 06/08/23.
 //
 
-import Foundation
+import SwiftUI
 
-struct ETGroupSummary {
+struct ETGroupSummary: Identifiable, Hashable {
+    var id = UUID()
     var group: ETTransactionGroup
     var amount: Double
 }

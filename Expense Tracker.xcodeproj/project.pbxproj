@@ -26,6 +26,7 @@
 		F19C0B512AB4549E0058F665 /* ETReportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19C0B502AB4549E0058F665 /* ETReportsView.swift */; };
 		F19C0B542AB455EE0058F665 /* ETReportLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19C0B532AB455EE0058F665 /* ETReportLayout.swift */; };
 		F1C0EC462AB3192300D004E4 /* ETAddTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C0EC452AB3192300D004E4 /* ETAddTransactionView.swift */; };
+		F1CFC34D2AB6DF9000577828 /* ETMonthlyCategoryGroupWiseSpents.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CFC34C2AB6DF9000577828 /* ETMonthlyCategoryGroupWiseSpents.swift */; };
 		F1DBBD602A7B41F7003BF75E /* ETRecentTransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DBBD5F2A7B41F7003BF75E /* ETRecentTransactionsView.swift */; };
 		F1DBBD622A7B4A5E003BF75E /* ETTransactionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DBBD612A7B4A5E003BF75E /* ETTransactionExtension.swift */; };
 		F1E574232A73C50600F76791 /* ETTransactionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E574222A73C50600F76791 /* ETTransactionGroup.swift */; };
@@ -56,6 +57,7 @@
 		F19C0B502AB4549E0058F665 /* ETReportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETReportsView.swift; sourceTree = "<group>"; };
 		F19C0B532AB455EE0058F665 /* ETReportLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETReportLayout.swift; sourceTree = "<group>"; };
 		F1C0EC452AB3192300D004E4 /* ETAddTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETAddTransactionView.swift; sourceTree = "<group>"; };
+		F1CFC34C2AB6DF9000577828 /* ETMonthlyCategoryGroupWiseSpents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETMonthlyCategoryGroupWiseSpents.swift; sourceTree = "<group>"; };
 		F1DBBD5F2A7B41F7003BF75E /* ETRecentTransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETRecentTransactionsView.swift; sourceTree = "<group>"; };
 		F1DBBD612A7B4A5E003BF75E /* ETTransactionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETTransactionExtension.swift; sourceTree = "<group>"; };
 		F1E574222A73C50600F76791 /* ETTransactionGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETTransactionGroup.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				F19C0B502AB4549E0058F665 /* ETReportsView.swift */,
+				F1CFC34C2AB6DF9000577828 /* ETMonthlyCategoryGroupWiseSpents.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				F11A099F2A6E9EB8005D952D /* ETHomeView.swift in Sources */,
 				F111E7B32A71277600BB81BE /* ETMonthCashFlow.swift in Sources */,
 				F111E7AF2A7114F900BB81BE /* CurrencyExtension.swift in Sources */,
+				F1CFC34D2AB6DF9000577828 /* ETMonthlyCategoryGroupWiseSpents.swift in Sources */,
 				F1C0EC462AB3192300D004E4 /* ETAddTransactionView.swift in Sources */,
 				F1E574232A73C50600F76791 /* ETTransactionGroup.swift in Sources */,
 				F14B55F02A6A64540001834B /* ETMainTabView.swift in Sources */,
