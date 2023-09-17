@@ -10,8 +10,6 @@ import SwiftData
 
 struct ETMonthView: View {
     
-    var expenseMonth: Date
-    
     @Bindable var monthCashflow: ETMonthCashFlow
     
     @Query

@@ -34,7 +34,7 @@ struct ETHomeView: View {
     
     var body: some View {
         NavigationStack {
-            ETMonthView(expenseMonth: expenseMonth, monthCashflow: monthCashflow, _transactions: monthTransactionQuery)
+            ETMonthView(monthCashflow: monthCashflow, _transactions: monthTransactionQuery)
                 .navigationTitle(expenseMonth.formatExpenseMonth())
                 .toolbar {
                     ToolbarItem {

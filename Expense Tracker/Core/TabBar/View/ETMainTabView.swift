@@ -22,8 +22,7 @@ struct ETMainTabView: View {
                 }
                 .tag(0)
             
-            // TODO Render Reports view
-            Text("Reports")
+            ETReportsView()
                 .onAppear {
                     selectedTab = 1
                 }
