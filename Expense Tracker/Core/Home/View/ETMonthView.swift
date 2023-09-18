@@ -34,6 +34,7 @@ struct ETMonthView: View {
             }
             if summary.count > 0 {
                 ETMonthCategorySummaryView(summary: summary)
+                ETMonthlyCategoryGroupWiseSpents(summary: summary)
             }
         }
         .padding()

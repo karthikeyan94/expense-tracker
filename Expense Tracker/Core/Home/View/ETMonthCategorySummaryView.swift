@@ -39,8 +39,6 @@ struct ETMonthCategorySummaryView: View {
                     BarMark(x: .value("Category", groupSummary.group.rawValue), y: .value("Amount", groupSummary.amount))
                 }
             }
-            
-            ETMonthlyCategoryGroupWiseSpents(summary: summary)
         }
         .padding(.vertical, 24)
     }
