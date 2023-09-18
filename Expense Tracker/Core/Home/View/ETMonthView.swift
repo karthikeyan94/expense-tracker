@@ -94,7 +94,7 @@ struct ETMonthViewOverviewCard: View {
                 }
             }
         }
-        .frame(width: .infinity, height: 150)
+        .frame(height: 150)
         .padding()
         .background(Color(.systemBlue))
         .cornerRadius(8)
