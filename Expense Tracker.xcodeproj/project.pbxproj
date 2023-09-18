@@ -36,6 +36,7 @@
 		F1E574272A73CB7400F76791 /* ETTransactionCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E574262A73CB7400F76791 /* ETTransactionCategory.swift */; };
 		F1E574292A73EA9B00F76791 /* ETTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E574282A73EA9B00F76791 /* ETTransaction.swift */; };
 		F1E5742B2A73EE1D00F76791 /* ETTransactionRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E5742A2A73EE1D00F76791 /* ETTransactionRecordView.swift */; };
+		F1EE7DAF2AB856F10007F1BD /* ETYearlySummaryChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EE7DAE2AB856F10007F1BD /* ETYearlySummaryChart.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		F1E574262A73CB7400F76791 /* ETTransactionCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETTransactionCategory.swift; sourceTree = "<group>"; };
 		F1E574282A73EA9B00F76791 /* ETTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETTransaction.swift; sourceTree = "<group>"; };
 		F1E5742A2A73EE1D00F76791 /* ETTransactionRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETTransactionRecordView.swift; sourceTree = "<group>"; };
+		F1EE7DAE2AB856F10007F1BD /* ETYearlySummaryChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETYearlySummaryChart.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +268,7 @@
 				F19C0B502AB4549E0058F665 /* ETReportsView.swift */,
 				F1CFC34C2AB6DF9000577828 /* ETMonthlyCategoryGroupWiseSpents.swift */,
 				F1A1A6CE2AB8288C0004DD10 /* ETYearWiseSummaryView.swift */,
+				F1EE7DAE2AB856F10007F1BD /* ETYearlySummaryChart.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				F11A099F2A6E9EB8005D952D /* ETHomeView.swift in Sources */,
 				F111E7B32A71277600BB81BE /* ETMonthCashFlow.swift in Sources */,
 				F111E7AF2A7114F900BB81BE /* CurrencyExtension.swift in Sources */,
+				F1EE7DAF2AB856F10007F1BD /* ETYearlySummaryChart.swift in Sources */,
 				F1CFC34D2AB6DF9000577828 /* ETMonthlyCategoryGroupWiseSpents.swift in Sources */,
 				F1C0EC462AB3192300D004E4 /* ETAddTransactionView.swift in Sources */,
 				F1E574232A73C50600F76791 /* ETTransactionGroup.swift in Sources */,

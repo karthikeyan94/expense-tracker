@@ -14,11 +14,8 @@ struct ETReportsView: View {
     
     @Environment(\.modelContext) private var modelContext
     
-    var months: [ETMonthCashFlow] {
-        let descriptor = FetchDescriptor<ETMonthCashFlow>(sortBy: [SortDescriptor(\.date, order: .reverse)])
-        guard let monthCashflows = try? modelContext.fetch(descriptor) else { return [] }
-        return monthCashflows
-    }
+    @Query(sort: [SortDescriptor<ETMonthCashFlow>(\.date, order: .reverse)])
+    var months: [ETMonthCashFlow]
     
     var previousMonths: [ETMonthCashFlow] {
         let currentMonth = Date.now.formatExpenseMonth()
@@ -66,10 +63,13 @@ struct ETReportsView: View {
                         }
                     }
                 } else {
-                    if yearlySummary.isEmpty {
-                        ETReportsEmptyView()
-                    } else {
-                        ETYearWiseSummaryView(yearlySummary: yearlySummary)
+                    ScrollView {
+                        if yearlySummary.isEmpty {
+                            ETReportsEmptyView()
+                        } else {
+                            ETYearWiseSummaryView(yearlySummary: yearlySummary)
+                            ETYearlySummaryChart()
+                        }
                     }
                 }
                 

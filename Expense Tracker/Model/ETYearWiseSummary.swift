@@ -8,7 +8,7 @@
 import Foundation
 
 struct ETYearWiseSummary: Identifiable, Hashable {
-    var id = UUID().uuidString
+    var id = UUID()
     var year: Int
     var income: Double
     var expenses: Double

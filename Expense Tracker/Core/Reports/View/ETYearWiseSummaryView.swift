@@ -24,15 +24,12 @@ struct ETYearWiseSummaryView: View {
         ZStack {
             ScrollView([.horizontal, .vertical]){
                 VStack(alignment: .leading) {
-                    HStack{
+                    HStack() {
                         Text("Year")
                         Spacer()
+                        Text("Total Income")
                         Spacer()
-                        Text("Income")
-                        Spacer()
-                        Spacer()
-                        Text("Expenses")
-                        Spacer()
+                        Text("Total Expenses")
                         Spacer()
                         Text("Savings")
                     }
@@ -40,28 +37,24 @@ struct ETYearWiseSummaryView: View {
                     .foregroundColor(Color(.systemBlue))
                     
                     Divider()
-                    
-                    ForEach(yearlySummary) { summary in
-                        VStack(alignment: .center){
-                            HStack{
-                                Text(String(describing: summary.year))
-                                Spacer()
-                                Spacer()
-                                Text("\(summary.income.formatAmountOfRegionalCurrency())")
-                                Spacer()
-                                Spacer()
-                                Text("\(summary.expenses.formatAmountOfRegionalCurrency())")
-                                Spacer()
-                                Spacer()
-                                ETRupeeView(amount: summary.income - summary.expenses, fontSize: 16)
-                            }
-                            
-                            if summary != yearlySummary.last {
-                                Divider()
-                            }
+                }
+                ForEach(yearlySummary) { summary in
+                    VStack(alignment: .leading){
+                        HStack{
+                            Text(String(describing: summary.year))
+                            Spacer()
+                            Text("\(summary.income.formatAmountOfRegionalCurrency())")
+                            Spacer()
+                            Text("\(summary.expenses.formatAmountOfRegionalCurrency())")
+                            Spacer()
+                            ETRupeeView(amount: summary.income - summary.expenses, fontSize: 16)
                         }
-                        .padding(.vertical, 8)
+                        
+                        if summary != yearlySummary.last {
+                            Divider()
+                        }
                     }
+                    .padding(.vertical, 8)
                 }
             }
             .frame(maxWidth: .infinity, minHeight: 100, maxHeight: 200)
