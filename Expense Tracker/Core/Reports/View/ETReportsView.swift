@@ -15,11 +15,27 @@ struct ETReportsView: View {
     @Environment(\.modelContext) private var modelContext
     
     var months: [ETMonthCashFlow] {
+        let descriptor = FetchDescriptor<ETMonthCashFlow>(sortBy: [SortDescriptor(\.date, order: .reverse)])
+        guard let monthCashflows = try? modelContext.fetch(descriptor) else { return [] }
+        return monthCashflows
+    }
+    
+    var previousMonths: [ETMonthCashFlow] {
         let currentMonth = Date.now.formatExpenseMonth()
-        let predicate = #Predicate<ETMonthCashFlow> { $0.id != currentMonth }
-        let descriptor = FetchDescriptor(predicate: predicate, sortBy: [SortDescriptor(\.date, order: .reverse)])
-        guard let previousMonths = try? modelContext.fetch(descriptor) else { return [] }
-        return previousMonths
+        return months.filter{ $0.id != currentMonth }
+    }
+    
+    var yearlySummary: [ETYearWiseSummary] {
+        let groupedYears = Dictionary(grouping: months) { monthCashflow in
+            Calendar.current.component(.year, from: monthCashflow.date)
+        }
+        
+        return groupedYears.map { year, cashflows in
+            let totalIncome = cashflows.reduce(0.0) { $0 + $1.income }
+            let totalExpenses = cashflows.reduce(0.0) { $0 + $1.expenses }
+            return ETYearWiseSummary(year: year, income: totalIncome, expenses: totalExpenses)
+        }
+        .sorted(by: { $0.year < $1.year })
     }
     
     var body: some View {
@@ -33,10 +49,10 @@ struct ETReportsView: View {
                 .pickerStyle(.segmented)
                 
                 if reportLayout == .monthly {
-                    if months.isEmpty {
+                    if previousMonths.isEmpty {
                         ETReportsEmptyView()
                     } else {
-                        List(months) { month in
+                        List(previousMonths) { month in
                             NavigationLink(value: month) {
                                 Text(month.id)
                                     .font(.title3)
@@ -50,7 +66,11 @@ struct ETReportsView: View {
                         }
                     }
                 } else {
-                    ETReportsEmptyView()
+                    if yearlySummary.isEmpty {
+                        ETReportsEmptyView()
+                    } else {
+                        ETYearWiseSummaryView(yearlySummary: yearlySummary)
+                    }
                 }
                 
                 Spacer()
