@@ -7,10 +7,17 @@
 
 import SwiftUI
 import SwiftData
+import OSLog
 
 struct ETReportsView: View {
     
+    static let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "ETReportsView")
+    
     @State private var reportLayout: ETReportLayout = .monthly
+    
+    @State private var showExportSheet = false
+    
+    @State private var exportingDocument = ETTransactionDocument("")
     
     @Environment(\.modelContext) private var modelContext
     
@@ -75,8 +82,59 @@ struct ETReportsView: View {
                 
                 Spacer()
             }
-            .navigationTitle("Reports")
             .padding()
+            .navigationTitle("Reports")
+            .toolbar {
+                ToolbarItem {
+                    Button(action: exportTransactions) {
+                        Image(systemName: "square.and.arrow.up")
+                            .renderingMode(.original)
+                    }
+                }
+            }
+            .fileExporter(isPresented: $showExportSheet, document: exportingDocument, contentType: .text, defaultFilename: "Expense Tracker Transactions.json") { result in
+                switch result {
+                case .success(_):
+                    ETReportsView.logger.info("Transactions exported successfully")
+                case .failure(let error):
+                    ETReportsView.logger.warning("\(error.localizedDescription)")
+                }
+            }
+        }
+    }
+    
+    func exportTransactions() -> Void {
+        do {
+            ETReportsView.logger.info("Export transactions initiated")
+            exportingDocument.text += "{"
+            for month in months {
+                if month != months.first {
+                    exportingDocument.text += ","
+                }
+                exportingDocument.text += "\"\(month.id)\":{\"summary\":"
+                let monthJson = try JSONEncoder().encode(month)
+                if let monthString = String(data: monthJson, encoding: .utf8) {
+                    exportingDocument.text += "\(monthString)"
+                } else {
+                    exportingDocument.text += "{}"
+                }
+                
+                let (startOfMonth, endOfMonth) = month.date.startAndEndOfMonth()
+                let predicate = #Predicate<ETTransaction> { $0.date >= startOfMonth && $0.date <= endOfMonth}
+                let transactions = try modelContext.fetch(FetchDescriptor<ETTransaction>(predicate: predicate, sortBy: [SortDescriptor(\.date, order: .forward)]))
+                let transactionsJson = try JSONEncoder().encode(transactions)
+                exportingDocument.text += ",\"transactions\":"
+                if let transactionsString = String(data: transactionsJson, encoding: .utf8) {
+                    exportingDocument.text += "\(transactionsString)"
+                } else {
+                    exportingDocument.text += "[]"
+                }
+                exportingDocument.text += "}"
+            }
+            exportingDocument.text += "}"
+            showExportSheet = true
+        } catch {
+            ETReportsView.logger.warning("\(error.localizedDescription)")
         }
     }
 }

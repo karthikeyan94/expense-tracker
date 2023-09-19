@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F10C70D62A83520A004CC32A /* PreviewSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10C70D52A83520A004CC32A /* PreviewSampleData.swift */; };
+		F1108EB02AB99A4900DBC46D /* ETTransactionDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1108EAF2AB99A4900DBC46D /* ETTransactionDocument.swift */; };
 		F111E7A72A70F28100BB81BE /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111E7A62A70F28100BB81BE /* DateExtension.swift */; };
 		F111E7AD2A70F8AF00BB81BE /* ETRupeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111E7AC2A70F8AF00BB81BE /* ETRupeeView.swift */; };
 		F111E7AF2A7114F900BB81BE /* CurrencyExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111E7AE2A7114F900BB81BE /* CurrencyExtension.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		F10C70D52A83520A004CC32A /* PreviewSampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSampleData.swift; sourceTree = "<group>"; };
+		F1108EAF2AB99A4900DBC46D /* ETTransactionDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETTransactionDocument.swift; sourceTree = "<group>"; };
 		F111E7A62A70F28100BB81BE /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		F111E7AC2A70F8AF00BB81BE /* ETRupeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETRupeeView.swift; sourceTree = "<group>"; };
 		F111E7AE2A7114F900BB81BE /* CurrencyExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExtension.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				F10C70D32A834EBF004CC32A /* Persistence */,
 				F19B7F2D2A7FB99200CE49B6 /* ETGroupSummary.swift */,
 				F1A1A6CC2AB8250C0004DD10 /* ETYearWiseSummary.swift */,
+				F1108EAF2AB99A4900DBC46D /* ETTransactionDocument.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				F1A1A6CD2AB8250C0004DD10 /* ETYearWiseSummary.swift in Sources */,
 				F1E574272A73CB7400F76791 /* ETTransactionCategory.swift in Sources */,
 				F19C0B512AB4549E0058F665 /* ETReportsView.swift in Sources */,
+				F1108EB02AB99A4900DBC46D /* ETTransactionDocument.swift in Sources */,
 				F1E574292A73EA9B00F76791 /* ETTransaction.swift in Sources */,
 				F111E7AD2A70F8AF00BB81BE /* ETRupeeView.swift in Sources */,
 				F1E574252A73C97D00F76791 /* ETTransactionType.swift in Sources */,
