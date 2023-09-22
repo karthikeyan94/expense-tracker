@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 import OSLog
+import FirebaseStorage
 
 struct ETReportsView: View {
     
@@ -18,6 +19,8 @@ struct ETReportsView: View {
     @State private var showExportSheet = false
     
     @State private var exportingDocument = ETTransactionDocument("")
+    
+    @State private var didFirebaseUploadSuccess = false
     
     @Environment(\.modelContext) private var modelContext
     
@@ -91,6 +94,12 @@ struct ETReportsView: View {
                             .renderingMode(.original)
                     }
                 }
+                ToolbarItem {
+                    Button(action: uploadToFirebaseStorage) {
+                        Image(systemName: "arrow.triangle.2.circlepath.circle.fill")
+                            .renderingMode(.original)
+                    }
+                }
             }
             .fileExporter(isPresented: $showExportSheet, document: exportingDocument, contentType: .text, defaultFilename: "Expense Tracker Transactions.json") { result in
                 switch result {
@@ -100,41 +109,83 @@ struct ETReportsView: View {
                     ETReportsView.logger.warning("\(error.localizedDescription)")
                 }
             }
+            .alert(Text("Success"), isPresented: $didFirebaseUploadSuccess) {
+                Button("OK") {
+                }
+            } message: {
+                Text("Transactions data uploaded.")
+            }
         }
     }
     
     func exportTransactions() -> Void {
+        ETReportsView.logger.info("Export transactions initiated")
+        guard let document = self.generateTransactionsExportableDocument() else {
+            return
+        }
+        exportingDocument = document
+        showExportSheet = true
+    }
+    
+    func generateTransactionsExportableDocument() -> ETTransactionDocument? {
         do {
-            ETReportsView.logger.info("Export transactions initiated")
-            exportingDocument.text += "{"
+            ETReportsView.logger.info("Generating exportable transactions document")
+            var document:ETTransactionDocument = ETTransactionDocument("")
+            document.text += "{"
             for month in months {
                 if month != months.first {
-                    exportingDocument.text += ","
+                    document.text += ","
                 }
-                exportingDocument.text += "\"\(month.id)\":{\"summary\":"
+                document.text += "\"\(month.id)\":{\"summary\":"
                 let monthJson = try JSONEncoder().encode(month)
                 if let monthString = String(data: monthJson, encoding: .utf8) {
-                    exportingDocument.text += "\(monthString)"
+                    document.text += "\(monthString)"
                 } else {
-                    exportingDocument.text += "{}"
+                    document.text += "{}"
                 }
                 
                 let (startOfMonth, endOfMonth) = month.date.startAndEndOfMonth()
                 let predicate = #Predicate<ETTransaction> { $0.date >= startOfMonth && $0.date <= endOfMonth}
                 let transactions = try modelContext.fetch(FetchDescriptor<ETTransaction>(predicate: predicate, sortBy: [SortDescriptor(\.date, order: .forward)]))
                 let transactionsJson = try JSONEncoder().encode(transactions)
-                exportingDocument.text += ",\"transactions\":"
+                document.text += ",\"transactions\":"
                 if let transactionsString = String(data: transactionsJson, encoding: .utf8) {
-                    exportingDocument.text += "\(transactionsString)"
+                    document.text += "\(transactionsString)"
                 } else {
-                    exportingDocument.text += "[]"
+                    document.text += "[]"
                 }
-                exportingDocument.text += "}"
+                document.text += "}"
             }
-            exportingDocument.text += "}"
-            showExportSheet = true
+            document.text += "}"
+            return document
         } catch {
-            ETReportsView.logger.warning("\(error.localizedDescription)")
+            ETReportsView.logger.warning("Export document generation failed due to \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
+    func uploadToFirebaseStorage() -> Void {
+        guard let document = self.generateTransactionsExportableDocument() else {
+            return
+        }
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        let backupFileRef = storageRef.child("backups/Expense Tracker Transactions.json")
+        
+        let fileMetadata = StorageMetadata()
+        fileMetadata.contentType = "application/json"
+        
+        backupFileRef.putData(Data(document.text.utf8), metadata: fileMetadata) { metadata, error in
+            guard metadata != nil else {
+                ETReportsView.logger.warning("File could not be uploaded.")
+                return
+            }
+            if let errorUnwraped = error {
+                ETReportsView.logger.warning("Firebase storage upload failed due to \(errorUnwraped.localizedDescription)")
+                return
+            }
+            ETReportsView.logger.info("Expese Tracker transactions uploaded to firebase storage.")
+            didFirebaseUploadSuccess = true
         }
     }
 }
