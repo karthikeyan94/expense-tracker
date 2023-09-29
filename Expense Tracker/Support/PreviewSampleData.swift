@@ -30,7 +30,9 @@ let previewContainer: ModelContainer = {
             ETTransaction(amount: 350, date: today.addingTimeInterval(8 * 60), type: .debit, category: .snacksBeverages, group: .provisions),
             ETTransaction(amount: 199, date: today.addingTimeInterval(9 * 60), type: .debit, category: .netflix, group: .entertainment),
             ETTransaction(amount: 2895, date: today.addingTimeInterval(10 * 60), type: .debit, category: .vehicleMaintenance, group: .transportation),
-            ETTransaction(amount: 600, date: today.addingTimeInterval(11 * 60), type: .debit, category: .oilChanges, group: .transportation)
+            ETTransaction(amount: 600, date: today.addingTimeInterval(11 * 60), type: .debit, category: .oilChanges, group: .transportation),
+            ETTransaction(amount: 90, date: today.addingTimeInterval(12 * 60), type: .debit, category: .milk, group: .provisions),
+            ETTransaction(amount: 350, date: today.addingTimeInterval(13 * 60), type: .debit, category: .snacksBeverages, group: .provisions)
         ]
         
         for transaction in transactions {

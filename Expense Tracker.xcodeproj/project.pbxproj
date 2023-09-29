@@ -20,6 +20,7 @@
 		F14B55D82A6A60750001834B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F14B55D72A6A60750001834B /* Assets.xcassets */; };
 		F14B55DB2A6A60750001834B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F14B55DA2A6A60750001834B /* Preview Assets.xcassets */; };
 		F14B55F02A6A64540001834B /* ETMainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B55EF2A6A64540001834B /* ETMainTabView.swift */; };
+		F16F1B562AC6F1D2008DB945 /* ETCategorySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16F1B552AC6F1D2008DB945 /* ETCategorySummary.swift */; };
 		F19B7F2C2A7F653F00CE49B6 /* ETTransactionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19B7F2B2A7F653F00CE49B6 /* ETTransactionsListView.swift */; };
 		F19B7F2E2A7FB99200CE49B6 /* ETGroupSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19B7F2D2A7FB99200CE49B6 /* ETGroupSummary.swift */; };
 		F19B7F302A7FB9E900CE49B6 /* ETCategorySummaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19B7F2F2A7FB9E900CE49B6 /* ETCategorySummaryExtension.swift */; };
@@ -83,6 +84,7 @@
 		F14B55D72A6A60750001834B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F14B55DA2A6A60750001834B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F14B55EF2A6A64540001834B /* ETMainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETMainTabView.swift; sourceTree = "<group>"; };
+		F16F1B552AC6F1D2008DB945 /* ETCategorySummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETCategorySummary.swift; sourceTree = "<group>"; };
 		F19B7F2B2A7F653F00CE49B6 /* ETTransactionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETTransactionsListView.swift; sourceTree = "<group>"; };
 		F19B7F2D2A7FB99200CE49B6 /* ETGroupSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETGroupSummary.swift; sourceTree = "<group>"; };
 		F19B7F2F2A7FB9E900CE49B6 /* ETCategorySummaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETCategorySummaryExtension.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				F19B7F2D2A7FB99200CE49B6 /* ETGroupSummary.swift */,
 				F1A1A6CC2AB8250C0004DD10 /* ETYearWiseSummary.swift */,
 				F1108EAF2AB99A4900DBC46D /* ETTransactionDocument.swift */,
+				F16F1B552AC6F1D2008DB945 /* ETCategorySummary.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				F1E574292A73EA9B00F76791 /* ETTransaction.swift in Sources */,
 				F111E7AD2A70F8AF00BB81BE /* ETRupeeView.swift in Sources */,
 				F1E574252A73C97D00F76791 /* ETTransactionType.swift in Sources */,
+				F16F1B562AC6F1D2008DB945 /* ETCategorySummary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

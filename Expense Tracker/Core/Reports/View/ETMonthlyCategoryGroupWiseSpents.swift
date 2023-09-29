@@ -8,11 +8,9 @@
 import SwiftUI
 
 struct ETMonthlyCategoryGroupWiseSpents: View {
-    var summary: [ETGroupSummary]
+    var groupSummary: [ETGroupSummary]
+    var categorySummary: [ETCategorySummary]
     
-    var sortedSummaries: [ETGroupSummary] {
-        summary.sorted(by: { $0.amount > $1.amount } )
-    }
     var body: some View {
         VStack {
             HStack {
@@ -35,7 +33,7 @@ struct ETMonthlyCategoryGroupWiseSpents: View {
                     
                     Divider()
                     
-                    ForEach(sortedSummaries) { eachSummary in
+                    ForEach(groupSummary) { eachSummary in
                         VStack(alignment: .center){
                             HStack{
                                 Text(eachSummary.group.rawValue)
@@ -43,7 +41,7 @@ struct ETMonthlyCategoryGroupWiseSpents: View {
                                 Text("\(eachSummary.amount.formatAmountOfRegionalCurrency())")
                             }
                             
-                            if eachSummary != sortedSummaries.last {
+                            if eachSummary != groupSummary.last {
                                 Divider()
                             }
                         }
@@ -53,10 +51,48 @@ struct ETMonthlyCategoryGroupWiseSpents: View {
             }
             .padding()
             .background(Color(.systemGray6))
+            .cornerRadius(8)
+            
+            if !categorySummary.isEmpty {
+                Spacer()
+                    .frame(height: 30)
+                
+                ZStack {
+                    VStack {
+                        HStack{
+                            Text("Expense Category")
+                            Spacer()
+                            Text("Amount")
+                        }
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color(.systemBlue))
+                        
+                        Divider()
+                        
+                        ForEach(categorySummary) { eachSummary in
+                            VStack(alignment: .center){
+                                HStack{
+                                    Text(eachSummary.category.rawValue)
+                                    Spacer()
+                                    Text("\(eachSummary.amount.formatAmountOfRegionalCurrency())")
+                                }
+                                
+                                if eachSummary != categorySummary.last {
+                                    Divider()
+                                }
+                            }
+                            .padding(.vertical, 8)
+                        }
+                    }
+                }
+                .padding()
+                .background(Color(.systemGray6))
+                .cornerRadius(8)
+            }
         }
     }
 }
 
 #Preview {
-    ETMonthlyCategoryGroupWiseSpents(summary: ETGroupSummary.getMockedSummary())
+    ETMonthlyCategoryGroupWiseSpents(groupSummary: ETGroupSummary.getMockedSummary(), categorySummary: [])
 }

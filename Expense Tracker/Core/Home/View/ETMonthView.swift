@@ -23,6 +23,21 @@ struct ETMonthView: View {
             totalTransactions.reduce(0.0) { $0 + $1.amount }
         }
         .map { ETGroupSummary(group: $0.key, amount: $0.value) }
+        .sorted(by: { $0.amount > $1.amount } )
+    }
+    
+    var categorySummary: [ETCategorySummary] {
+        let expenseTransactions = transactions.filter { $0.type == .debit }
+        return Dictionary(
+            grouping: expenseTransactions,
+            by: { $0.category }
+        )
+        .filter{ $0.value.count > 1 }
+        .mapValues { totalTransactions in
+            totalTransactions.reduce(0.0) { $0 + $1.amount }
+        }
+        .map { ETCategorySummary(category: $0.key, amount: $0.value) }
+        .sorted(by: { $0.amount > $1.amount } )
     }
     
     var body: some View {
@@ -34,7 +49,7 @@ struct ETMonthView: View {
             }
             if summary.count > 0 {
                 ETMonthCategorySummaryView(summary: summary)
-                ETMonthlyCategoryGroupWiseSpents(summary: summary)
+                ETMonthlyCategoryGroupWiseSpents(groupSummary: summary, categorySummary: categorySummary)
             }
         }
         .padding()
