@@ -22,14 +22,14 @@ extension Date {
     }
     
     func startAndEndOfMonth() -> (start: Date, end: Date) {
-        let calendar = Calendar.current
-        let year = calendar.component(.year, from: self)
-        let month = calendar.component(.month, from: self)
+        guard let startOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: self)) else {
+            fatalError("Unable to get start date from date")
+        }
+        guard let endOfMonth = Calendar.current.date(byAdding: DateComponents(month: 1, second: -1), to: startOfMonth) else {
+            fatalError("Unable to get end date from date")
+        }
         
-        let startOfMonthComps = DateComponents(year: year, month: month, day: 1)
-        let endOfMonthComps = DateComponents(year: year, month: month + 1, day: 0)
-        
-        return (calendar.date(from: startOfMonthComps)!, calendar.date(from: endOfMonthComps)!)
+        return (startOfMonth, endOfMonth)
     }
     
     static func expenseMonth(from expenseMonth: String) -> Date {

@@ -133,7 +133,7 @@ struct ETMonthViewBudget: View {
             .padding(.bottom, 4)
             
             if let budget = monthCashflow.budget {
-                Gauge(value: monthCashflow.expenses, in: 0...budget) {
+                Gauge(value: (monthCashflow.expenses > budget ? budget : monthCashflow.expenses), in: 0...budget) {
                     Text("Spent")
                 } currentValueLabel: {
                     Text("\(monthCashflow.expenses.formatAmountOfRegionalCurrency())")
@@ -158,7 +158,7 @@ struct ETMonthViewBudget: View {
                         }
                     }
                     .padding()
-                    .frame(width: .infinity, height: 100)
+                    .frame(height: 100)
                     .background(Color(.systemOrange).opacity(0.4))
                     .cornerRadius(20)
                 }
