@@ -26,7 +26,7 @@ struct ETYearlySummaryChart: View {
                     .annotation {
                         Text("\(month.income.formatAmountOfRegionalCurrency())")
                     }
-                    .foregroundStyle(Color(.blue))
+                    .foregroundStyle(Color(.systemOrange))
                 }
             }
             .frame(height: 300)
