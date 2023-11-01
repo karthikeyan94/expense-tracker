@@ -14,7 +14,7 @@ struct ETReportsView: View {
     
     static let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "ETReportsView")
     
-    @State private var reportLayout: ETReportLayout = .monthly
+    @State private var reportLayout: ETReportLayout = .yearly
     
     @State private var showExportSheet = false
     

@@ -24,12 +24,12 @@ struct ETYearWiseSummaryView: View {
         ZStack {
             ScrollView([.horizontal, .vertical]){
                 VStack(alignment: .leading) {
-                    HStack() {
+                    HStack {
                         Text("Year")
                         Spacer()
-                        Text("Total Income")
+                        Text("Income")
                         Spacer()
-                        Text("Total Expenses")
+                        Text("Expenses")
                         Spacer()
                         Text("Savings")
                     }

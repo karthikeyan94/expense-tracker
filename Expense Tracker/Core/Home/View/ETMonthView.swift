@@ -148,34 +148,55 @@ struct ETMonthViewBudget: View {
             .padding(.bottom, 4)
             
             if let budget = monthCashflow.budget {
-                Gauge(value: (monthCashflow.expenses > budget ? budget : monthCashflow.expenses), in: 0...budget) {
-                    Text("Spent")
-                } currentValueLabel: {
-                    Text("\(monthCashflow.expenses.formatAmountOfRegionalCurrency())")
-                }
-                .tint(Gradient(colors: [.green, .yellow, .red]))
-                
-                if monthCashflow.expenses > budget {
-                    ZStack {
-                        HStack {
-                            VStack {
-                                Image(systemName: "exclamationmark.circle.fill")
-                                    .renderingMode(.original)
-                                    .font(.system(size: 50))
-                            }
-                            VStack {
-                                Text("You have exceeded the maximum spending limit of \(budget.formatAmountOfRegionalCurrency())")
-                                    .multilineTextAlignment(.leading)
-                                    .lineLimit(3)
-                            }
-                            .padding(.horizontal)
-                            Spacer()
+                VStack {
+                    HStack {
+                        Spacer()
+                        Gauge(value: (monthCashflow.expenses > budget ? budget : monthCashflow.expenses), in: 0...budget) {
+                            Text("Spent")
+                                .scaleEffect(0.75)
+                        } currentValueLabel: {
+                            Text("\(monthCashflow.expenses.formatAmountOfRegionalCurrency())")
                         }
+                        .tint(Gradient(colors: [.green, .yellow, .red]))
+                        .gaugeStyle(.accessoryCircular)
+                        .scaleEffect(2)
+                        
+                        Spacer()
+                        VStack(alignment: .leading) {
+                            Text("\(budget.formatAmountOfRegionalCurrency())")
+                                .fontWeight(.semibold)
+                            Text("Allocated")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                        Spacer()
                     }
                     .padding()
-                    .frame(height: 100)
-                    .background(Color(.systemOrange).opacity(0.4))
-                    .cornerRadius(20)
+                    .padding(.vertical, 8)
+                    
+                    if monthCashflow.expenses > budget {
+                        Spacer(minLength: 24)
+                        ZStack {
+                            HStack {
+                                VStack {
+                                    Image(systemName: "exclamationmark.circle.fill")
+                                        .renderingMode(.original)
+                                        .font(.system(size: 50))
+                                }
+                                VStack {
+                                    Text("You have exceeded the maximum spending limit of \(budget.formatAmountOfRegionalCurrency())")
+                                        .multilineTextAlignment(.leading)
+                                        .lineLimit(3)
+                                }
+                                .padding(.horizontal)
+                                Spacer()
+                            }
+                        }
+                        .padding()
+                        .frame(height: 100)
+                        .background(Color(.systemOrange).opacity(0.4))
+                        .cornerRadius(20)
+                    }
                 }
             } else {
                 Image("budget")
