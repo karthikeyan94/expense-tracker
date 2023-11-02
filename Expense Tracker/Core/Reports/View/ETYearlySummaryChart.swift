@@ -25,11 +25,15 @@ struct ETYearlySummaryChart: View {
                     )
                     .annotation {
                         Text("\(month.income.formatAmountOfRegionalCurrency())")
+                            .font(.system(size: 12))
                     }
                     .foregroundStyle(Color(.systemOrange))
                 }
             }
             .frame(height: 300)
+            .chartScrollableAxes(.horizontal)
+            .chartScrollPosition(x: .constant(3))
+            .chartXVisibleDomain(length: 3)
             
             Text("Expenses vs Income")
                 .padding(.top, 24)
@@ -48,6 +52,7 @@ struct ETYearlySummaryChart: View {
                     )
                     .annotation {
                         Text("\(month.expenses.formatAmountOfRegionalCurrency())")
+                            .font(.system(size: 12))
                     }
                     .foregroundStyle(Color(.red))
                     
@@ -59,6 +64,9 @@ struct ETYearlySummaryChart: View {
                 }
             }
             .frame(height: 300)
+            .chartScrollableAxes(.horizontal)
+            .chartScrollPosition(x: .constant(3))
+            .chartXVisibleDomain(length: 3)
             
             Text("Savings vs Income")
                 .padding(.top, 24)
@@ -77,11 +85,15 @@ struct ETYearlySummaryChart: View {
                     )
                     .annotation {
                         Text("\((month.income - month.expenses).formatAmountOfRegionalCurrency())")
+                            .font(.system(size: 12))
                     }
                     .foregroundStyle(Color(.green))
                 }
             }
             .frame(height: 300)
+            .chartScrollableAxes(.horizontal)
+            .chartScrollPosition(x: .constant(3))
+            .chartXVisibleDomain(length: 3)
         }
     }
 }

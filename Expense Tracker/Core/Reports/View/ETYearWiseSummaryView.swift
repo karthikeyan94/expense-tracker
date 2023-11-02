@@ -11,6 +11,9 @@ struct ETYearWiseSummaryView: View {
     
     var yearlySummary: [ETYearWiseSummary]
     
+    @Environment(\.horizontalSizeClass) private var deviceSizeClass
+    var isCompact: Bool { deviceSizeClass == .compact }
+    
     var body: some View {
         VStack {
             HStack {
@@ -21,46 +24,57 @@ struct ETYearWiseSummaryView: View {
             }
             .padding(.bottom, 8)
         }
-        ZStack {
-            ScrollView([.horizontal, .vertical]){
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text("Year")
-                        Spacer()
-                        Text("Income")
-                        Spacer()
-                        Text("Expenses")
-                        Spacer()
-                        Text("Savings")
-                    }
-                    .fontWeight(.semibold)
-                    .foregroundColor(Color(.systemBlue))
-                    
-                    Divider()
-                }
-                ForEach(yearlySummary) { summary in
-                    VStack(alignment: .leading){
-                        HStack{
+        
+        if isCompact {
+            Table(of: ETYearWiseSummary.self) {
+                TableColumn("Annual Summary") { summary in
+                    if summary.year == -1 {
+                        HStack {
+                            Text("Year")
+                            Spacer()
+                            Text("Income")
+                            Spacer()
+                            Text("Expenses")
+                            Spacer()
+                            Text("Savings")
+                        }
+                        .foregroundColor(Color(.systemBlue))
+                    } else {
+                        HStack {
                             Text(String(describing: summary.year))
                             Spacer()
                             Text("\(summary.income.formatAmountOfRegionalCurrency())")
                             Spacer()
                             Text("\(summary.expenses.formatAmountOfRegionalCurrency())")
                             Spacer()
-                            ETRupeeView(amount: summary.income - summary.expenses, fontSize: 16)
+                            ETRupeeView(amount: summary.income - summary.expenses, fontSize: 10)
                         }
-                        
-                        if summary != yearlySummary.last {
-                            Divider()
-                        }
+                        .font(.system(size: 12))
                     }
-                    .padding(.vertical, 8)
+                }
+            } rows: {
+                TableRow(ETYearWiseSummary(year: -1, income: -1, expenses: -1))
+                ForEach(yearlySummary)
+            }
+            .frame(minHeight: 100, maxHeight: 200)
+        } else {
+            Table(yearlySummary) {
+                TableColumn("Year") { summary in
+                    Text(String(describing: summary.year))
+                }
+                TableColumn("Income") { summary in
+                    Text("\(summary.income.formatAmountOfRegionalCurrency())")
+                }
+                TableColumn("Expenses") { summary in
+                    Text("\(summary.expenses.formatAmountOfRegionalCurrency())")
+                }
+                TableColumn("Savings") { summary in
+                    ETRupeeView(amount: summary.income - summary.expenses, fontSize: 10)
                 }
             }
-            .frame(maxWidth: .infinity, minHeight: 100, maxHeight: 200)
+            .frame(minHeight: 100, maxHeight: 200)
+            .font(.system(size: 12))
         }
-        .padding()
-        .background(Color(.systemGray6))
     }
 }
 

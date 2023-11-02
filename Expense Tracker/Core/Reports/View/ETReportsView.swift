@@ -79,6 +79,7 @@ struct ETReportsView: View {
                         } else {
                             ETYearWiseSummaryView(yearlySummary: yearlySummary)
                             ETYearlySummaryChart()
+                                .padding()
                         }
                     }
                 }
