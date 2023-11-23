@@ -35,15 +35,15 @@ struct ETYearlySummaryChart: View {
             .chartScrollPosition(x: .constant(3))
             .chartXVisibleDomain(length: 3)
             
-            Text("Expenses vs Income")
+            Text("Expenses")
                 .padding(.top, 24)
             Chart {
                 ForEach(months) { month in
                     AreaMark(
                         x: .value("Month", month.id),
-                        y: .value("Amount", month.income)
+                        y: .value("Amount", month.expenses)
                     )
-                    .foregroundStyle(Color(.blue))
+                    .foregroundStyle(Color(.red))
                     .opacity(0.8)
                     
                     PointMark(
@@ -68,7 +68,7 @@ struct ETYearlySummaryChart: View {
             .chartScrollPosition(x: .constant(3))
             .chartXVisibleDomain(length: 3)
             
-            Text("Savings vs Income")
+            Text("Savings")
                 .padding(.top, 24)
             Chart {
                 ForEach(months) { month in
