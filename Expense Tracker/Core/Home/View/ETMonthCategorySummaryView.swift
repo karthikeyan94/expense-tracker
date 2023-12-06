@@ -34,6 +34,7 @@ struct ETMonthCategorySummaryView: View {
                 .frame(height: 500)
                 .chartLegend(alignment: .center)
                 .padding()
+                .padding(.horizontal, 8)
             } else {
                 Chart(summary, id: \.group) { groupSummary in
                     BarMark(x: .value("Category", groupSummary.group.rawValue), y: .value("Amount", groupSummary.amount))

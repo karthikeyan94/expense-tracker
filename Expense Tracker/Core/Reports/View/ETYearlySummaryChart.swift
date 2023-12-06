@@ -14,6 +14,13 @@ struct ETYearlySummaryChart: View {
     @Query(sort: [SortDescriptor<ETMonthCashFlow>(\.date, order: .forward)])
     var months: [ETMonthCashFlow]
     
+    var scrollPosition: Int {
+        if months.count > 3 {
+            return months.count-2;
+        }
+        return 0
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text("Income")
@@ -32,7 +39,7 @@ struct ETYearlySummaryChart: View {
             }
             .frame(height: 300)
             .chartScrollableAxes(.horizontal)
-            .chartScrollPosition(x: .constant(3))
+            .chartScrollPosition(x: .constant(months[scrollPosition].id))
             .chartXVisibleDomain(length: 3)
             
             Text("Expenses")
@@ -65,7 +72,7 @@ struct ETYearlySummaryChart: View {
             }
             .frame(height: 300)
             .chartScrollableAxes(.horizontal)
-            .chartScrollPosition(x: .constant(3))
+            .chartScrollPosition(x: .constant(months[scrollPosition].id))
             .chartXVisibleDomain(length: 3)
             
             Text("Savings")
@@ -92,7 +99,7 @@ struct ETYearlySummaryChart: View {
             }
             .frame(height: 300)
             .chartScrollableAxes(.horizontal)
-            .chartScrollPosition(x: .constant(3))
+            .chartScrollPosition(x: .constant(months[scrollPosition].id))
             .chartXVisibleDomain(length: 3)
         }
     }
