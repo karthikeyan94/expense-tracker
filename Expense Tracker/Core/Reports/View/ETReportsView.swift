@@ -32,6 +32,12 @@ struct ETReportsView: View {
         return months.filter{ $0.id != currentMonth }
     }
     
+    var yearWisePreviousMonths: [String: [ETMonthCashFlow]] {
+        return Dictionary(grouping: previousMonths) { cashflow in
+            String(cashflow.id.suffix(4))
+        }
+    }
+    
     var yearlySummary: [ETYearWiseSummary] {
         let groupedYears = Dictionary(grouping: months) { monthCashflow in
             Calendar.current.component(.year, from: monthCashflow.date)
@@ -59,14 +65,17 @@ struct ETReportsView: View {
                     if previousMonths.isEmpty {
                         ETReportsEmptyView()
                     } else {
-                        List(previousMonths) { month in
-                            NavigationLink(value: month) {
-                                Text(month.id)
-                                    .font(.title3)
-                                    .fontWeight(.semibold)
+                        List {
+                            ForEach(yearWisePreviousMonths.sorted(by: { $0.key > $1.key }), id: \.key) {yearValue, yearCashflows in
+                                Section(header: Text(yearValue)) {
+                                    ForEach(yearCashflows) { month in
+                                        NavigationLink(value: month) {
+                                            Text(Date.extractMonthName(from: month.id))
+                                        }
+                                    }
+                                }
                             }
                         }
-                        .listStyle(.plain)
                         .navigationDestination(for: ETMonthCashFlow.self) { month in
                             ETReportsMonthRouterView(month: month)
                                 .navigationTitle(month.id)
