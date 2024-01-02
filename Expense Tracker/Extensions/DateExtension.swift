@@ -37,4 +37,9 @@ extension Date {
         formatter.dateFormat = "MMMM yyyy"
         return formatter.date(from: expenseMonth) ?? Date()
     }
+    
+    static func extractMonthName(from expenseMonth: String) -> String {
+        let components = expenseMonth.components(separatedBy: " ")
+        return components.first ?? "";
+    }
 }

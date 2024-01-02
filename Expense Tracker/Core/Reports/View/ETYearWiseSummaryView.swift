@@ -54,11 +54,11 @@ struct ETYearWiseSummaryView: View {
                 }
             } rows: {
                 TableRow(ETYearWiseSummary(year: -1, income: -1, expenses: -1))
-                ForEach(yearlySummary)
+                ForEach(yearlySummary.sorted(by: {$0.year > $1.year}))
             }
-            .frame(minHeight: 100, maxHeight: 200)
+            .frame(minHeight: 200, maxHeight: 300)
         } else {
-            Table(yearlySummary) {
+            Table(yearlySummary.sorted(by: {$0.year > $1.year})) {
                 TableColumn("Year") { summary in
                     Text(String(describing: summary.year))
                 }
@@ -72,7 +72,7 @@ struct ETYearWiseSummaryView: View {
                     ETRupeeView(amount: summary.income - summary.expenses, fontSize: 10)
                 }
             }
-            .frame(minHeight: 100, maxHeight: 200)
+            .frame(minHeight: 200, maxHeight: 300)
             .font(.system(size: 12))
         }
     }
