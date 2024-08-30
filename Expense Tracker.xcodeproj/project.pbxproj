@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B0DCC9E2C81DA2300EBEA4B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B0DCC9D2C81DA2300EBEA4B /* GoogleService-Info.plist */; };
 		F10C70D62A83520A004CC32A /* PreviewSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10C70D52A83520A004CC32A /* PreviewSampleData.swift */; };
 		F1108EB02AB99A4900DBC46D /* ETTransactionDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1108EAF2AB99A4900DBC46D /* ETTransactionDocument.swift */; };
 		F111E7A72A70F28100BB81BE /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F111E7A62A70F28100BB81BE /* DateExtension.swift */; };
@@ -33,7 +34,6 @@
 		F1CFC34D2AB6DF9000577828 /* ETMonthlyCategoryGroupWiseSpents.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CFC34C2AB6DF9000577828 /* ETMonthlyCategoryGroupWiseSpents.swift */; };
 		F1DBBD602A7B41F7003BF75E /* ETRecentTransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DBBD5F2A7B41F7003BF75E /* ETRecentTransactionsView.swift */; };
 		F1DBBD622A7B4A5E003BF75E /* ETTransactionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DBBD612A7B4A5E003BF75E /* ETTransactionExtension.swift */; };
-		F1DD95042ABAFD27008349D3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1DD95032ABAFD27008349D3 /* GoogleService-Info.plist */; };
 		F1DD95482ABB2284008349D3 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F1DD95472ABB2284008349D3 /* FirebaseAnalytics */; };
 		F1DD954A2ABB2284008349D3 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = F1DD95492ABB2284008349D3 /* FirebaseAnalyticsOnDeviceConversion */; };
 		F1DD954C2ABB2284008349D3 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F1DD954B2ABB2284008349D3 /* FirebaseAnalyticsSwift */; };
@@ -70,6 +70,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B0DCC9D2C81DA2300EBEA4B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F10C70D52A83520A004CC32A /* PreviewSampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSampleData.swift; sourceTree = "<group>"; };
 		F1108EAF2AB99A4900DBC46D /* ETTransactionDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETTransactionDocument.swift; sourceTree = "<group>"; };
 		F111E7A62A70F28100BB81BE /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -97,7 +98,6 @@
 		F1CFC34C2AB6DF9000577828 /* ETMonthlyCategoryGroupWiseSpents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETMonthlyCategoryGroupWiseSpents.swift; sourceTree = "<group>"; };
 		F1DBBD5F2A7B41F7003BF75E /* ETRecentTransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETRecentTransactionsView.swift; sourceTree = "<group>"; };
 		F1DBBD612A7B4A5E003BF75E /* ETTransactionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETTransactionExtension.swift; sourceTree = "<group>"; };
-		F1DD95032ABAFD27008349D3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F1E574222A73C50600F76791 /* ETTransactionGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETTransactionGroup.swift; sourceTree = "<group>"; };
 		F1E574242A73C97D00F76791 /* ETTransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETTransactionType.swift; sourceTree = "<group>"; };
 		F1E574262A73CB7400F76791 /* ETTransactionCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETTransactionCategory.swift; sourceTree = "<group>"; };
@@ -212,7 +212,7 @@
 		F14B55D22A6A60750001834B /* Expense Tracker */ = {
 			isa = PBXGroup;
 			children = (
-				F1DD95032ABAFD27008349D3 /* GoogleService-Info.plist */,
+				2B0DCC9D2C81DA2300EBEA4B /* GoogleService-Info.plist */,
 				F14B55E12A6A610A0001834B /* App */,
 				F111E7AB2A70F89C00BB81BE /* Components */,
 				F10C70D22A833286004CC32A /* Constants */,
@@ -436,7 +436,7 @@
 			files = (
 				F14B55DB2A6A60750001834B /* Preview Assets.xcassets in Resources */,
 				F14B55D82A6A60750001834B /* Assets.xcassets in Resources */,
-				F1DD95042ABAFD27008349D3 /* GoogleService-Info.plist in Resources */,
+				2B0DCC9E2C81DA2300EBEA4B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,7 +607,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Expense Tracker/Preview Content\"";
-				DEVELOPMENT_TEAM = G6455C475K;
+				DEVELOPMENT_TEAM = ALMK5UKY2Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Expense Tracker";
@@ -622,7 +622,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sivabalan.experiments.Expense-Tracker";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.karthikeyan.experiments.Expense-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -638,7 +638,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Expense Tracker/Preview Content\"";
-				DEVELOPMENT_TEAM = G6455C475K;
+				DEVELOPMENT_TEAM = ALMK5UKY2Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Expense Tracker";
@@ -653,7 +653,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sivabalan.experiments.Expense-Tracker";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.karthikeyan.experiments.Expense-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
